@@ -1,0 +1,309 @@
+:root {
+    --primary-color: #87CEEB; /* NMIXX Water Blue */
+    --accent-color: #FF69B4; /* Hot Pink for contrast/mix */
+    --bg-color: #0A192F; /* Deep Navy */
+    --card-bg: rgba(255, 255, 255, 0.1); /* Glassmorphism */
+    --text-color: #FFFFFF;
+    --text-muted: #B0B0B0;
+    --font-main: 'Montserrat', sans-serif;
+    --border-radius: 16px;
+    --transition: 0.3s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-main);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    background-image: radial-gradient(circle at 10% 20%, rgba(135, 206, 235, 0.1) 0%, transparent 20%),
+                      radial-gradient(circle at 90% 80%, rgba(255, 105, 180, 0.1) 0%, transparent 20%);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Typography */
+h1, h2, h3 {
+    font-weight: 700;
+    margin-bottom: 1rem;
+    letter-spacing: -0.5px;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: var(--transition);
+}
+
+/* Header & Nav */
+header {
+    background: rgba(10, 25, 47, 0.85); /* Semi-transparent */
+    backdrop-filter: blur(10px);
+    padding: 1rem 5%;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--primary-color);
+    letter-spacing: 2px;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+nav a {
+    font-weight: 500;
+    position: relative;
+    padding: 0.5rem 0;
+}
+
+nav a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--primary-color);
+    transition: width 0.3s;
+}
+
+nav a:hover {
+    color: var(--primary-color);
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+/* Mobile Nav Toggle (Hidden on Desktop) */
+.menu-toggle {
+    display: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+/* Main Content */
+main {
+    flex: 1; /* Pushes footer down */
+    padding: 2rem 5%;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+/* Hero Section (Index) */
+.hero {
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: linear-gradient(rgba(10, 25, 47, 0.6), rgba(10, 25, 47, 0.6)), url('https://placehold.co/1920x1080/0A192F/87CEEB?text=NMIXX+Universe+Background') no-repeat center/cover;
+    background-attachment: fixed;
+    border-radius: var(--border-radius);
+    margin-bottom: 3rem;
+    padding: 2rem;
+}
+
+.hero h1 {
+    font-size: 4rem;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero p {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    color: var(--text-muted);
+}
+
+.btn {
+    padding: 1rem 2.5rem;
+    background-color: var(--primary-color);
+    color: var(--bg-color);
+    border-radius: 50px;
+    font-weight: 700;
+    text-transform: uppercase;
+    box-shadow: 0 4px 15px rgba(135, 206, 235, 0.4);
+    display: inline-block;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(135, 206, 235, 0.6);
+    background-color: #fff;
+    color: var(--primary-color);
+}
+
+/* Grid Layout (Members, Variety) */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+/* Cards */
+.card {
+    background: var(--card-bg);
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.15);
+    border-color: var(--primary-color);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.card img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-bottom: 1rem;
+}
+
+.card h3 {
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.card p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+
+.card .tag {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    background: rgba(135, 206, 235, 0.2);
+    color: var(--primary-color);
+    border-radius: 20px;
+    font-size: 0.8rem;
+    margin-bottom: 1rem;
+}
+
+/* Music Timeline / List */
+.music-list {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+.music-item {
+    display: flex;
+    gap: 2rem;
+    background: var(--card-bg);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    align-items: center;
+}
+
+.music-item:nth-child(even) {
+    flex-direction: row-reverse;
+}
+
+.music-info {
+    flex: 1;
+}
+
+.music-video {
+    flex: 1;
+    aspect-ratio: 16/9;
+}
+
+.music-video iframe {
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+}
+
+/* Footer */
+footer {
+    background: rgba(10, 25, 47, 0.95);
+    padding: 3rem 5%;
+    margin-top: 4rem;
+    text-align: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.social-links {
+    margin: 1.5rem 0;
+}
+
+.social-links a {
+    margin: 0 10px;
+    font-size: 1.2rem;
+    color: var(--text-muted);
+}
+
+.social-links a:hover {
+    color: var(--primary-color);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none; /* Simplification for this assignment: hidden on mobile or needs JS toggle. sticking to CSS hover or stacked for purity */
+    }
+    
+    /* Simple Mobile Nav Solution for CSS-only */
+    nav ul {
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background: var(--bg-color);
+        padding: 1rem;
+        gap: 1rem;
+        text-align: center;
+        display: none; /* Hidden by default */
+    }
+
+    /* Show nav when hovering header (hacky but works without JS) or just stack them */
+    header:hover nav ul {
+        display: flex;
+        border-bottom: 1px solid var(--primary-color);
+    }
+    
+    .menu-toggle {
+        display: block;
+    }
+    
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+    
+    .music-item, .music-item:nth-child(even) {
+        flex-direction: column;
+    }
+}
